@@ -4,100 +4,136 @@
   <meta charset="UTF-8">
   <title>Daria Posuda</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body id="page"
-  class="min-h-screen transition-colors duration-500 bg-gradient-to-br from-emerald-950 via-emerald-900 to-black text-emerald-50">
+<body id="page" class="min-h-screen transition-colors duration-500 bg-gradient-to-br from-emerald-950 via-emerald-900 to-black text-emerald-50">
 
 <!-- HEADER -->
 <header class="bg-black/60 backdrop-blur sticky top-0 z-10 border-b border-yellow-400/40">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-6">
-    <h1 id="brand" class="text-3xl font-extrabold tracking-widest uppercase text-yellow-300">
+  <div class="max-w-7xl mx-auto flex flex-col gap-4 px-6 py-6 md:flex-row md:justify-between md:items-center">
+
+    <h1 class="text-3xl font-extrabold tracking-widest uppercase text-yellow-300">
       Daria Posuda
     </h1>
 
     <!-- THEME SWITCHER -->
-    <div class="flex gap-2 text-sm">
-      <button onclick="setTheme('emerald')"
-        class="px-4 py-2 rounded-full border border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-black transition">
-        Emerald 👑
-      </button>
-      <button onclick="setTheme('black')"
-        class="px-4 py-2 rounded-full border border-gray-300 text-gray-200 hover:bg-gray-200 hover:text-black transition">
-        Black 🖤
-      </button>
-      <button onclick="setTheme('white')"
-        class="px-4 py-2 rounded-full border border-gray-500 text-gray-800 bg-white hover:bg-gray-100 transition">
-        White 🤍
-      </button>
+    <div class="flex flex-wrap gap-2 text-sm">
+      <button onclick="setTheme('emerald')" class="theme-btn">Emerald 👑</button>
+      <button onclick="setTheme('black')" class="theme-btn">Black 🖤</button>
+      <button onclick="setTheme('white')" class="theme-btn">White 🤍</button>
+      <button onclick="setTheme('rose')" class="theme-btn">Rose 🌸</button>
+      <button onclick="setTheme('blue')" class="theme-btn">Blue 🌙</button>
     </div>
+
   </div>
 </header>
 
 <main class="max-w-7xl mx-auto px-6">
 
 <!-- HERO -->
-<section class="text-center py-32">
-  <h2 id="title" class="text-6xl font-extrabold mb-6 text-yellow-300">
+<section class="text-center py-24">
+  <h2 id="title" class="text-5xl md:text-6xl font-extrabold mb-4 text-yellow-300">
     Королевская посуда
   </h2>
-  <p id="subtitle" class="text-xl mb-10 text-emerald-300">
+  <p id="subtitle" class="text-lg md:text-xl mb-6 opacity-90">
     Роскошь • Качество • Стиль
   </p>
-  <a
-    href="https://www.instagram.com/daria_posuda_uralsk/"
-    target="_blank"
-    class="inline-block bg-gradient-to-r from-yellow-300 to-amber-400 text-black px-14 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition">
-    Смотреть каталог
+  <a href="https://www.instagram.com/daria_posuda_uralsk/" target="_blank"
+     class="inline-block bg-gradient-to-r from-yellow-300 to-amber-400 text-black px-10 py-4 rounded-full font-bold shadow-2xl hover:scale-105 transition">
+    Заказать в Instagram
   </a>
+</section>
+
+<!-- CATEGORY TABS -->
+<section class="mb-12 text-center">
+  <div class="flex flex-wrap justify-center gap-3">
+    <button onclick="filterItems('all')" class="tab-btn">Все</button>
+    <button onclick="filterItems('cook')" class="tab-btn">Кастрюли</button>
+    <button onclick="filterItems('tea')" class="tab-btn">Чайники</button>
+    <button onclick="filterItems('set')" class="tab-btn">Сервизы</button>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 pb-24">
+
+  <!-- ITEM -->
+  <div class="item cook card">
+    <img src="https://via.placeholder.com/400x300" class="card-img">
+    <div class="card-body">
+      <h3>Мантоварка</h3>
+      <p>от 12 000 ₸</p>
+    </div>
+  </div>
+
+  <div class="item set card">
+    <img src="https://via.placeholder.com/400x300" class="card-img">
+    <div class="card-body">
+      <h3>Сервиз</h3>
+      <p>от 18 000 ₸</p>
+    </div>
+  </div>
+
+  <div class="item tea card">
+    <img src="https://via.placeholder.com/400x300" class="card-img">
+    <div class="card-body">
+      <h3>Чайник</h3>
+      <p>от 8 000 ₸</p>
+    </div>
+  </div>
+
 </section>
 
 </main>
 
-<footer id="footer"
-  class="bg-black border-t border-yellow-400/40 text-amber-400 py-6 text-center">
+<footer id="footer" class="text-center text-sm py-6 opacity-80">
   © 2026 Daria Posuda
 </footer>
 
-<!-- THEME SCRIPT -->
+<!-- STYLES -->
+<style>
+  .theme-btn {
+    @apply px-4 py-2 rounded-full border text-sm transition border-yellow-400 text-yellow-300 hover:bg-yellow-400 hover:text-black;
+  }
+  .tab-btn {
+    @apply px-5 py-2 rounded-full border border-white/30 hover:bg-white/10 transition;
+  }
+  .card {
+    @apply rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/30 bg-black/50;
+  }
+  .card-img {
+    @apply w-full h-60 object-cover;
+  }
+  .card-body {
+    @apply p-5 text-center;
+  }
+  .card-body h3 {
+    @apply text-xl font-semibold mb-1;
+  }
+</style>
+
+<!-- SCRIPT -->
 <script>
-function setTheme(theme) {
-  const body = document.getElementById("page");
-  const title = document.getElementById("title");
-  const subtitle = document.getElementById("subtitle");
-  const footer = document.getElementById("footer");
+function setTheme(t) {
+  const body = document.getElementById('page').classList;
+  body.value = 'min-h-screen transition-colors duration-500';
 
-  body.className = "min-h-screen transition-colors duration-500";
+  const themes = {
+    emerald: ['bg-gradient-to-br','from-emerald-950','via-emerald-900','to-black','text-emerald-50'],
+    black: ['bg-black','text-gray-100'],
+    white: ['bg-stone-100','text-gray-900'],
+    rose: ['bg-gradient-to-br','from-rose-100','via-rose-50','to-amber-50','text-gray-800'],
+    blue: ['bg-gradient-to-br','from-slate-950','via-blue-950','to-black','text-blue-100']
+  };
 
-  if (theme === "emerald") {
-    body.classList.add(
-      "bg-gradient-to-br","from-emerald-950","via-emerald-900","to-black","text-emerald-50"
-    );
-    title.className = "text-6xl font-extrabold mb-6 text-yellow-300";
-    subtitle.className = "text-xl mb-10 text-emerald-300";
-    footer.className = "bg-black border-t border-yellow-400/40 text-amber-400 py-6 text-center";
-  }
+  themes[t].forEach(c => body.add(c));
+}
 
-  if (theme === "black") {
-    body.classList.add(
-      "bg-gradient-to-br","from-black","via-neutral-900","to-black","text-gray-100"
-    );
-    title.className = "text-6xl font-extrabold mb-6 text-emerald-400";
-    subtitle.className = "text-xl mb-10 text-gray-300";
-    footer.className = "bg-black border-t border-gray-700 text-gray-400 py-6 text-center";
-  }
-
-  if (theme === "white") {
-    body.classList.add(
-      "bg-stone-100","text-gray-900"
-    );
-    title.className = "text-6xl font-extrabold mb-6 text-gray-900";
-    subtitle.className = "text-xl mb-10 text-gray-600";
-    footer.className = "bg-white border-t border-gray-300 text-gray-600 py-6 text-center";
-  }
+function filterItems(cat) {
+  document.querySelectorAll('.item').forEach(el => {
+    el.style.display = (cat === 'all' || el.classList.contains(cat)) ? 'block' : 'none';
+  });
 }
 </script>
 
