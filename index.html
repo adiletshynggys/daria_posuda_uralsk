@@ -4,25 +4,29 @@
   <meta charset="UTF-8">
   <title>Daria Posuda Uralsk</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- ✅ Tailwind CSS — CORRECT -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="min-h-screen bg-gradient-to-br from-emerald-950 via-emerald-900 to-black text-emerald-50">
+<body id="page"
+  class="min-h-screen transition-colors duration-500
+         bg-gradient-to-br from-emerald-950 via-emerald-900 to-black
+         text-emerald-50">
 
 <!-- HEADER -->
 <header class="sticky top-0 z-10 bg-black/70 backdrop-blur border-b border-emerald-400/40">
-  <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
     <h1 class="text-3xl font-extrabold tracking-widest uppercase text-emerald-300">
       Daria Posuda Uralsk
     </h1>
 
-    <a href="https://wa.me/77470817281"
-       class="inline-block bg-green-500 text-black px-6 py-2 rounded-full font-bold hover:scale-105 transition"
-       target="_blank">
-      WhatsApp заказ
-    </a>
+    <!-- THEME SWITCHER -->
+    <div class="flex flex-wrap gap-2 text-sm">
+      <button class="themeBtn" onclick="setTheme('emerald')">Emerald 👑</button>
+      <button class="themeBtn" onclick="setTheme('black')">Black 🖤</button>
+      <button class="themeBtn" onclick="setTheme('white')">White 🤍</button>
+      <button class="themeBtn" onclick="setTheme('rose')">Rose 🌸</button>
+      <button class="themeBtn" onclick="setTheme('midnight')">Midnight 🌙</button>
+    </div>
   </div>
 </header>
 
@@ -33,42 +37,50 @@
   <h2 class="text-5xl md:text-6xl font-extrabold mb-4">
     Посуда для дома и подарков
   </h2>
-  <p class="text-lg md:text-xl text-emerald-200">
+  <p class="text-lg md:text-xl text-emerald-200 mb-6">
     Качество • Стиль • Практичность
   </p>
-</section>
 
-<!-- TABS -->
-<section class="mb-12 text-center">
-  <div class="flex justify-center gap-4">
-    <button onclick="showTab('boards')" class="tabBtn">Доски</button>
+  <div class="flex justify-center gap-4 flex-wrap">
+    <a href="https://www.instagram.com/daria_posuda_uralsk/"
+       target="_blank"
+       class="bg-pink-500 text-black px-6 py-3 rounded-full font-bold hover:scale-105 transition">
+      Instagram
+    </a>
+
+    <a href="https://wa.me/77470817281"
+       target="_blank"
+       class="bg-green-500 text-black px-6 py-3 rounded-full font-bold hover:scale-105 transition">
+      WhatsApp заказ
+    </a>
   </div>
 </section>
 
-<!-- PRODUCTS -->
-<section id="boards" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 pb-24">
+<!-- CATEGORY TABS -->
+<section class="mb-12 text-center">
+  <div class="flex justify-center gap-4 flex-wrap">
+    <button class="tabBtn" onclick="showTab('boards')">Доски</button>
+    <button class="tabBtn" onclick="showTab('manty')">Мантоварка</button>
+    <button class="tabBtn" onclick="showTab('pots')">Кастрюли</button>
+    <button class="tabBtn" onclick="showTab('sets')">Сервизы</button>
+  </div>
+</section>
 
-  <!-- PRODUCT CARD -->
-  <div class="bg-black/50 rounded-3xl overflow-hidden shadow-2xl border border-emerald-400/30">
+<!-- ======== ДОСКИ ======== -->
+<section id="boards" class="productGrid">
 
-    <img
-      src="images/cutting-board-leevan.jpg"
-      alt="Разделочная доска Leevan"
-      class="w-full h-72 object-cover"
-    >
+  <div class="productCard">
+    <img src="images/cutting-board-leevan.jpg"
+         alt="Разделочная доска Leevan"
+         class="w-full h-56 object-cover">
 
     <div class="p-6 text-center">
-      <h3 class="text-xl font-semibold mb-1">
-        Разделочная доска Leevan
-      </h3>
-
-      <p class="text-emerald-300 mb-4">
-        от 9 500 ₸
-      </p>
+      <h3 class="text-xl font-semibold">Разделочная доска Leevan</h3>
+      <p class="text-emerald-300 mt-1">от 9 500 ₸</p>
 
       <a href="https://wa.me/77470817281"
-         target="_blank"
-         class="inline-block bg-green-500 text-black px-6 py-2 rounded-full font-bold hover:scale-105 transition">
+         class="orderBtn"
+         target="_blank">
         Заказать в WhatsApp
       </a>
     </div>
@@ -76,36 +88,82 @@
 
 </section>
 
+<!-- EMPTY SECTIONS (ready for products) -->
+<section id="manty" class="productGrid hidden"></section>
+<section id="pots" class="productGrid hidden"></section>
+<section id="sets" class="productGrid hidden"></section>
+
 </main>
 
 <footer class="text-center py-6 text-sm text-emerald-300 border-t border-emerald-400/30">
   © 2026 Daria Posuda Uralsk
 </footer>
 
-<!-- SIMPLE JS (tabs ready for expansion) -->
-<script>
-function showTab(id) {
-  document.querySelectorAll('section[id]').forEach(sec => {
-    sec.style.display = sec.id === id ? 'grid' : 'none';
-  });
-}
-</script>
-
 <!-- STYLES -->
 <style>
-.tabBtn {
-  border: 1px solid rgba(52, 211, 153, 0.5);
-  color: #6ee7b7;
-  padding: .5rem 1.5rem;
-  border-radius: 999px;
-  font-weight: 600;
+.themeBtn {
+  border:1px solid rgba(52,211,153,.6);
+  padding:.4rem .8rem;
+  border-radius:9999px;
+  color:#6ee7b7;
+  font-weight:600;
 }
-.tabBtn:hover {
-  background: #10b981;
-  color: #000;
+.themeBtn:hover{background:#10b981;color:#000}
+
+.tabBtn{
+  border:1px solid rgba(255,255,255,.3);
+  padding:.6rem 1.4rem;
+  border-radius:9999px;
+  font-weight:600;
+}
+
+.productGrid{
+  display:grid;
+  gap:2.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  padding-bottom:4rem;
+}
+
+.productCard{
+  background:rgba(0,0,0,.5);
+  border-radius:1.5rem;
+  overflow:hidden;
+  box-shadow:0 25px 50px -12px rgba(0,0,0,.35);
+}
+
+.orderBtn{
+  display:inline-block;
+  margin-top:1rem;
+  background:#22c55e;
+  padding:.6rem 1.4rem;
+  border-radius:9999px;
+  font-weight:700;
+  color:black;
 }
 </style>
 
+<!-- SCRIPTS -->
+<script>
+function showTab(id){
+  document.querySelectorAll('.productGrid').forEach(s=>s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+}
+
+function setTheme(theme){
+  const b=document.getElementById('page');
+  b.className='min-h-screen transition-colors duration-500';
+
+  const themes={
+    emerald:['bg-gradient-to-br','from-emerald-950','via-emerald-900','to-black','text-emerald-50'],
+    black:['bg-black','text-gray-100'],
+    white:['bg-stone-100','text-gray-900'],
+    rose:['bg-gradient-to-br','from-rose-100','via-rose-50','to-amber-50','text-gray-800'],
+    midnight:['bg-gradient-to-br','from-slate-950','via-indigo-950','to-black','text-indigo-100']
+  };
+
+  themes[theme].forEach(c=>b.classList.add(c));
+}
+</script>
+
 </body>
 </html>
-``
