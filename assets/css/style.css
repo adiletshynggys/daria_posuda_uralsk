@@ -357,7 +357,7 @@ body:has(dialog[open]) { overflow: hidden; }
   .pd { width: min(1180px, calc(100vw - 64px)); height: min(820px, calc(100dvh - 64px)); margin: auto; }
   .pd-box { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); overflow: hidden; border-radius: 4px; }
   .pd-media { display: flex; flex-direction: column; min-height: 0; background: var(--alt); }
-  .pd-figure { flex: 1; min-height: 0; display: grid; }
+  .pd-figure { flex: 1; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr); overflow: hidden; }
   .pd-figure img { height: 100%; max-height: none; }
   .pd-thumbs { padding: 10px; justify-content: center; }
   .pd-info { overflow-y: auto; padding: 56px 44px 40px; }
