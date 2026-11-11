@@ -1,0 +1,17 @@
+{
+  "name": "daria-posuda",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "parse": "node tools/parse.mjs",
+    "sheets": "node tools/sheets.mjs",
+    "images": "node tools/images.mjs",
+    "build": "node tools/build.mjs",
+    "data": "node tools/parse.mjs && node tools/build.mjs && node tools/images.mjs && node tools/build.mjs",
+    "serve": "node tools/serve.mjs 5173"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
+  }
+}

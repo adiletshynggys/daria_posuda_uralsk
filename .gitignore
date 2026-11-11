@@ -1,0 +1,10 @@
+node_modules/
+curation/sheets/
+.claude/
+.DS_Store
+# generated working files (rebuilt by npm run data)
+data/parsed.json
+data/dropped.json
+# one-off scripts
+tools/patch*.cjs
+tools/tmp_*.cjs
